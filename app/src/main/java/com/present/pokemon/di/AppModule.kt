@@ -2,6 +2,7 @@ package com.present.pokemon.di
 
 import com.google.gson.GsonBuilder
 import com.present.pokemon.network.PokemonApi
+import com.present.pokemon.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,7 +39,7 @@ class AppModule {
             .create()
 
         return Retrofit.Builder()
-            .baseUrl("http://192.168.0.102:5000/")
+            .baseUrl(Constants.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

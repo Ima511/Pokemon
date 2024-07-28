@@ -10,62 +10,16 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
-
-/*
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun PokemonDetailsScreen(navController: NavController, uiState: PokemonDetailUiState) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Pokémon List") }
-            )
-        }
-    ) { paddingValues ->
-        Box(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
-        ) {
-            when {
-                uiState.isLoading -> {
-                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))                }
-
-                uiState.error != null -> {
-                    Text(
-                        text = "Error: ${uiState.error}",
-                        color = MaterialTheme.colorScheme.error,
-
-                        )
-                }
-
-                uiState.pokemonDetails != null -> {
-                    // Display the Pokémon details
-                    Text(
-                        text = "Name: ${uiState.pokemonDetails.name}",
-                        style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.padding(16.dp)
-                    )
-                    Text(
-                        text = "Height: ${uiState.pokemonDetails.height}",
-                        style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.padding(16.dp)
-                    )
-
-                    // Add more details as needed
-                }
-            }
-        }
-    }
-}
-*/
-
+import com.present.pokemon.model.PokemonDetails
 
 @Composable
 fun PokemonDetailsScreen(
@@ -129,7 +83,8 @@ fun PokemonDetailsScreen(
 @Preview(showBackground = true)
 @Composable
 fun PreviewPokemonDetailsScreen() {
-/*
-    PokemonDetailsScreen(pokemonId = "1", navController = rememberNavController())
-*/
+    val uiState = PokemonDetailUiState(PokemonDetails(name = "Pikachu",id = 25, height = 4, weight = 6, baseExperience = 112))
+    val navController = rememberNavController()
+
+    PokemonDetailsScreen(uiState = uiState, navController = navController)
 }

@@ -7,18 +7,6 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 
-/*
-@Composable
-fun PokemonDetailsView(
-    navController: NavController,
-    viewModel: PokemonDetailViewModel = hiltViewModel(),
-    id: String
-) {
-    viewModel.getPokemonDetails(id)
-    val uiState by viewModel.uiState.collectAsState()
-
-    PokemonDetailsScreen(navController = navController, uiState = uiState)
-}*/
 
 @Composable
 fun PokemonDetailsView(
@@ -28,10 +16,9 @@ fun PokemonDetailsView(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    LaunchedEffect(id) {
+    LaunchedEffect(key1 = id) {
         viewModel.getPokemonDetails(id)
     }
 
     PokemonDetailsScreen(navController = navController, uiState = uiState)
 }
-

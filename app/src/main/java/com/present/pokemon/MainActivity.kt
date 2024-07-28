@@ -30,19 +30,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PokemonTheme {
-             /*   val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = "pokemons") {
-                    composable("pokemons") {
-                        PokemonsView(navController = navController)
-                    }
-                    composable(
-                        "pokemonDetails/{pokemonId}",
-                        arguments = listOf(navArgument("pokemonId") { type = NavType.StringType })
-                    ) { backStackEntry ->
-                        val pokemonId = backStackEntry.arguments?.getString("pokemonId")
-                        PokemonDetailsScreen(pokemonId = pokemonId, navController)
-                    }
-                }*/
                 val navController = rememberNavController()
                 PokemonNavGraph(navController = navController)
             }

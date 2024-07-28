@@ -9,11 +9,10 @@ import javax.inject.Singleton
 
 @Singleton
 interface PokemonApi {
-
-    @GET("https://pokeapi.co/api/v2/pokemon")
+    @GET("pokemon")
     suspend fun getPokemons(): Response<Pokemons>
 
 
-    @GET("https://pokeapi.co/api/v2/pokemon/{id}/")
+    @GET("pokemon/{id}/")
     suspend fun getPokemonsDetail(@Path("id") id: String):Response<PokemonDetails>
 }

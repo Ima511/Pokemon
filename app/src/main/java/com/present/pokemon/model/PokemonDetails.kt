@@ -4,31 +4,32 @@ package com.present.pokemon.model
 import com.google.gson.annotations.SerializedName
 
 data class PokemonDetails(
-    @SerializedName("abilities")
-    val abilities: List<Ability>,
+   /* @SerializedName("abilities")
+    val abilities: List<Ability>,*/
     @SerializedName("base_experience")
     val baseExperience: Int,
-    @SerializedName("cries")
-    val cries: Cries,
-    @SerializedName("forms")
-    val forms: List<Form>,
-    @SerializedName("game_indices")
-    val gameIndices: List<GameIndice>,
+    /* @SerializedName("cries")
+     val cries: Cries,
+     @SerializedName("forms")
+     val forms: List<Form>,
+     @SerializedName("game_indices")
+     val gameIndices: List<GameIndice>,*/
     @SerializedName("height")
     val height: Int,
-    @SerializedName("held_items")
-    val heldItems: List<Any>,
-    @SerializedName("id")
-    val id: Int,
-    @SerializedName("is_default")
-    val isDefault: Boolean,
-    @SerializedName("location_area_encounters")
-    val locationAreaEncounters: String,
-    @SerializedName("moves")
-    val moves: List<Move>,
+   @SerializedName("id")
+   val id: Int,
+   /*   @SerializedName("held_items")
+      val heldItems: List<Any>,
+
+      @SerializedName("is_default")
+      val isDefault: Boolean,
+      @SerializedName("location_area_encounters")
+      val locationAreaEncounters: String,
+      @SerializedName("moves")
+      val moves: List<Move>,*/
     @SerializedName("name")
     val name: String,
-    @SerializedName("order")
+/*    @SerializedName("order")
     val order: Int,
     @SerializedName("past_abilities")
     val pastAbilities: List<Any>,
@@ -41,7 +42,7 @@ data class PokemonDetails(
     @SerializedName("stats")
     val stats: List<Stat>,
     @SerializedName("types")
-    val types: List<Type>,
+    val types: List<Type>,*/
     @SerializedName("weight")
     val weight: Int
 )
