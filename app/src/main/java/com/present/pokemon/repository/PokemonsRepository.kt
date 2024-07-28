@@ -30,9 +30,9 @@ class PokemonsRepository @Inject constructor(private val pokemonApi: PokemonApi)
         }
     }
 
-    suspend fun getPokemonsDetails(): DataOrException<PokemonDetails, Boolean, Exception> {
+    suspend fun getPokemonsDetails(id: String): DataOrException<PokemonDetails, Boolean, Exception> {
         return try {
-            val response = pokemonApi.getPokemonsDetail()
+            val response = pokemonApi.getPokemonsDetail(id)
             if (response.isSuccessful) {
                 DataOrException(data = response.body())
             } else {

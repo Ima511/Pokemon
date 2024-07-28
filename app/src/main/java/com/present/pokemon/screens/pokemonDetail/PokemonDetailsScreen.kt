@@ -1,27 +1,127 @@
 package com.present.pokemon.screens.pokemonDetail
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
+import coil.compose.AsyncImage
+
+/*
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PokemonDetailsScreen(navController: NavController, uiState: PokemonDetailUiState) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Pokémon List") }
+            )
+        }
+    ) { paddingValues ->
+        Box(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+        ) {
+            when {
+                uiState.isLoading -> {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))                }
+
+                uiState.error != null -> {
+                    Text(
+                        text = "Error: ${uiState.error}",
+                        color = MaterialTheme.colorScheme.error,
+
+                        )
+                }
+
+                uiState.pokemonDetails != null -> {
+                    // Display the Pokémon details
+                    Text(
+                        text = "Name: ${uiState.pokemonDetails.name}",
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier.padding(16.dp)
+                    )
+                    Text(
+                        text = "Height: ${uiState.pokemonDetails.height}",
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier.padding(16.dp)
+                    )
+
+                    // Add more details as needed
+                }
+            }
+        }
+    }
+}
+*/
+
 
 @Composable
-fun PokemonDetailsScreen(pokemonId: String?, navController: NavController) {
-    // Replace with actual Pokémon details fetching and displaying
-    Column(modifier = Modifier.padding(16.dp)) {
-        Text(text = "Pokémon Details for ID: $pokemonId", style = MaterialTheme.typography.titleLarge)
-        Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { navController.popBackStack() }) {
-            Text(text = "Back")
+fun PokemonDetailsScreen(
+    navController: NavController,
+    uiState: PokemonDetailUiState
+) {
+    if (uiState.isLoading) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
+    } else if (uiState.error != null) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text(
+                text = "Error: ${uiState.error}",
+                color = MaterialTheme.colorScheme.error,
+                style = MaterialTheme.typography.titleLarge
+            )
+        }
+    } else if (uiState.pokemonDetails != null) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            AsyncImage(
+                model = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${uiState.pokemonDetails.id}.png",
+                contentDescription = "Image of ${uiState.pokemonDetails.name}",
+                modifier = Modifier
+                    .size(128.dp)
+                    .padding(bottom = 16.dp)
+            )
+
+                Text(
+                text = "Name: ${uiState.pokemonDetails.name}",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Text(
+                text = "Height: ${uiState.pokemonDetails.height}",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Text(
+                text = "Weight: ${uiState.pokemonDetails.weight}",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Text(
+                text = "Base Experience: ${uiState.pokemonDetails.baseExperience}",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+
+            // Add more details as needed
         }
     }
 }
@@ -29,5 +129,7 @@ fun PokemonDetailsScreen(pokemonId: String?, navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewPokemonDetailsScreen() {
+/*
     PokemonDetailsScreen(pokemonId = "1", navController = rememberNavController())
+*/
 }

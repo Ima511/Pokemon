@@ -17,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.present.pokemon.navigation.PokemonNavGraph
 import com.present.pokemon.screens.pokemonDetail.PokemonDetailsScreen
 import com.present.pokemon.screens.pokemons.PokemonsScreen
 import com.present.pokemon.screens.pokemons.PokemonsView
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PokemonTheme {
-                val navController = rememberNavController()
+             /*   val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = "pokemons") {
                     composable("pokemons") {
                         PokemonsView(navController = navController)
@@ -41,7 +42,9 @@ class MainActivity : ComponentActivity() {
                         val pokemonId = backStackEntry.arguments?.getString("pokemonId")
                         PokemonDetailsScreen(pokemonId = pokemonId, navController)
                     }
-                }
+                }*/
+                val navController = rememberNavController()
+                PokemonNavGraph(navController = navController)
             }
         }
     }

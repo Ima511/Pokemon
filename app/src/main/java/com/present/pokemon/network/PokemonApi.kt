@@ -14,6 +14,6 @@ interface PokemonApi {
     suspend fun getPokemons(): Response<Pokemons>
 
 
-    @GET("https://pokeapi.co/api/v2/pokemon/7/")
-    suspend fun getPokemonsDetail():Response<PokemonDetails>
+    @GET("https://pokeapi.co/api/v2/pokemon/{id}/")
+    suspend fun getPokemonsDetail(@Path("id") id: String):Response<PokemonDetails>
 }
